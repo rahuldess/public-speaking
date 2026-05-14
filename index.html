@@ -3,249 +3,610 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Speech League — Public Speaking | Best Brains Surrey</title>
+  <title>Public Speaking | Best Brains Surrey</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <script defer src="/_vercel/insights/script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900;1000&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --blue:      #1f5bad;
-      --blue-dark: #174a91;
-      --blue-lt:   #e8f0fb;
-      --blue-mid:  #d0e1f7;
-      --yellow:    #f5a623;
-      --yellow-lt: #fff8ec;
-      --green:     #2baa6e;
-      --white:     #ffffff;
-      --offwhite:  #f7f9fc;
-      --gray:      #666;
-      --gray-lt:   #999;
-      --dark:      #1a2b4a;
-      --border:    #dce8f8;
+      --blue:        #1f5bad;
+      --blue-deep:   #0f3b7d;
+      --blue-dark:   #0a2a5c;
+      --blue-lt:     #e8f0fb;
+      --blue-mid:    #d0e1f7;
+      --yellow:      #ffc233;
+      --yellow-deep: #f5a623;
+      --yellow-lt:   #fff4d6;
+      --orange:      #ed7d31;
+      --orange-dk:   #c45f1c;
+      --orange-lt:   #ffe9d6;
+      --green:       #2bb673;
+      --green-dk:    #1f8a55;
+      --cream:       #fff8ec;
+      --paper:       #fbfaf5;
+      --white:       #ffffff;
+      --gray:        #5a6478;
+      --gray-lt:     #8a93a6;
+      --dark:        #0c1a36;
+      --darker:      #060e22;
+      --border:      #e3eaf6;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--white); color: var(--dark); font-family: 'Open Sans', sans-serif; font-weight: 400; line-height: 1.65; overflow-x: hidden; }
+    body {
+      background: var(--paper);
+      color: var(--dark);
+      font-family: 'Open Sans', system-ui, sans-serif;
+      font-weight: 500;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
 
     /* ── TOP BAR ── */
     .top-bar {
-      background: var(--blue);
-      padding: 0.45rem 5%;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem;
+      background: var(--blue-dark);
+      padding: 0.55rem 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.4rem;
     }
-    .top-bar-left { color: rgba(255,255,255,0.82); font-size: 0.78rem; }
+    .top-bar-left { color: rgba(255,255,255,0.78); font-size: 0.8rem; font-weight: 600; }
     .top-bar-right { display: flex; gap: 0; flex-wrap: wrap; }
     .top-bar-right a {
-      color: #fff; font-size: 0.78rem; font-weight: 600; text-decoration: none;
-      padding: 0 1rem; border-right: 1px solid rgba(255,255,255,0.25);
+      color: #fff; font-size: 0.8rem; font-weight: 700;
+      font-family: 'Nunito', sans-serif; letter-spacing: 0.01em;
+      text-decoration: none; padding: 0 1.05rem;
+      border-right: 1px solid rgba(255,255,255,0.18);
     }
     .top-bar-right a:last-child { border-right: none; }
-    .top-bar-right a:hover { text-decoration: underline; }
+    .top-bar-right a:hover { color: var(--yellow); }
 
     /* ── NAV ── */
     nav {
-      background: var(--white); border-bottom: 2px solid var(--blue-lt);
+      background: var(--white);
+      border-bottom: 3px solid var(--blue);
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%; height: 68px;
-      box-shadow: 0 2px 12px rgba(31,91,173,0.08);
+      padding: 0 5%; height: 76px;
+      box-shadow: 0 4px 18px rgba(15,59,125,0.08);
     }
-    .logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
-    .logo-icon {
-      width: 40px; height: 40px; background: var(--blue); border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; color: #fff;
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo-img { height: 48px; width: auto; display: block; }
+    .logo-sub-line { display: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--dark);
+      font-family: 'Nunito', sans-serif; font-size: 0.92rem; font-weight: 800;
+      transition: color 0.2s;
     }
-    .logo-text { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.15rem; color: var(--blue); line-height: 1.15; letter-spacing: -0.01em; }
-    .logo-sub { font-size: 0.7rem; font-weight: 600; color: var(--gray); display: block; letter-spacing: 0.03em; }
-    .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--dark); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--blue); }
     .nav-cta {
-      background: var(--yellow); color: #fff !important; padding: 0.55rem 1.3rem;
-      border-radius: 30px; font-weight: 800 !important; font-size: 0.85rem !important;
-      white-space: nowrap; transition: background 0.2s !important;
+      background: var(--yellow) !important; color: var(--blue-dark) !important;
+      padding: 0.65rem 1.4rem; border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(255,194,51,0.45);
+      white-space: nowrap; transition: transform 0.15s, box-shadow 0.2s !important;
     }
-    .nav-cta:hover { background: #d4881a !important; }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 7px 20px rgba(255,194,51,0.55); color: var(--blue-dark) !important; }
 
-    /* ── HERO BANNER ── */
+    .mobile-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 44px; height: 44px; padding: 0;
+      flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+    }
+    .mobile-toggle span { display: block; width: 24px; height: 3px; background: var(--blue-dark); border-radius: 2px; transition: transform 0.2s; }
+
+    /* ── PNG BANNER ── */
     .hero-banner {
       width: 100%; display: block;
-      max-height: 320px; object-fit: cover; object-position: center top;
+      object-fit: cover; object-position: center;
     }
 
-    /* ── KEY FACTS STRIP ── */
-    .facts-strip {
-      background: var(--blue); padding: 1.1rem 5%;
-      display: flex; align-items: center; justify-content: center;
-      gap: 0; flex-wrap: wrap;
+    /* ── HTML HERO ── */
+    .hero {
+      position: relative;
+      background:
+        radial-gradient(900px 600px at 85% 110%, rgba(232,51,107,0.18), transparent 60%),
+        radial-gradient(700px 500px at 0% 0%, rgba(255,194,51,0.15), transparent 65%),
+        linear-gradient(180deg, var(--blue-deep), var(--blue-dark) 75%);
+      color: #fff;
+      padding: clamp(3rem, 6vw, 5rem) 5% clamp(3.5rem, 6vw, 5.5rem);
+      overflow: hidden;
     }
-    .fact-pill {
-      display: flex; align-items: center; gap: 0.5rem;
-      color: #fff; font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 700;
-      padding: 0.5rem 1.5rem; border-right: 1px solid rgba(255,255,255,0.2);
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(rgba(255,255,255,0.06) 1.2px, transparent 1.2px);
+      background-size: 26px 26px;
+      pointer-events: none;
+      opacity: 0.7;
     }
-    .fact-pill:last-child { border-right: none; }
-    .fact-pill .fi { font-size: 1.1rem; }
+    .hero-inner { position: relative; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.35fr 1fr; gap: 3.5rem; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(6px);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.3rem;
+    }
+    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 0 4px rgba(255,194,51,0.25); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 4px rgba(255,194,51,0.25);} 50% { box-shadow: 0 0 0 8px rgba(255,194,51,0.1);} }
+
+    .hero h1 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      margin-bottom: 1.3rem;
+      text-wrap: balance;
+    }
+    .hero h1 .accent-y { color: var(--yellow); }
+    .hero h1 .accent-m { color: var(--orange); display: inline-block; transform: rotate(-2deg); background: linear-gradient(180deg, transparent 60%, rgba(237,125,49,0.25) 60%); padding: 0 0.15em; }
+    .hero p.lead {
+      font-size: clamp(1rem, 1.25vw, 1.18rem);
+      color: rgba(255,255,255,0.85);
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    .hero-cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: 1rem; letter-spacing: 0.01em;
+      padding: 1rem 1.8rem;
+      border-radius: 999px;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--yellow); color: var(--blue-dark); box-shadow: 0 8px 24px rgba(255,194,51,0.4); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255,194,51,0.55); }
+    .btn-ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); padding: calc(1rem - 2px) calc(1.8rem - 2px); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); }
+    .btn-orange { background: var(--orange); color: #fff; box-shadow: 0 8px 24px rgba(237,125,49,0.4); }
+    .btn-orange:hover { background: var(--orange-dk); transform: translateY(-3px); }
+    .btn-blue { background: var(--blue); color: #fff; box-shadow: 0 8px 24px rgba(31,91,173,0.3); }
+    .btn-blue:hover { background: var(--blue-deep); transform: translateY(-3px); }
+
+    .hero-meta { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .hero-meta-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.78); font-weight: 600; }
+    .hero-meta-item strong { color: #fff; font-family: 'Nunito', sans-serif; font-weight: 800; }
+    .hero-meta-item .checkmark { width: 22px; height: 22px; border-radius: 50%; background: var(--green); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 0.7rem; font-weight: 900; flex-shrink: 0; }
+
+    /* ── Hero side card ── */
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      border-radius: 26px;
+      padding: 2rem;
+      position: relative;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: 26px; padding: 1px;
+      background: linear-gradient(135deg, rgba(255,194,51,0.6), transparent 30%, transparent 70%, rgba(237,125,49,0.5));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none;
+    }
+    .hero-card-tag {
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow);
+      margin-bottom: 0.5rem;
+    }
+    .hero-card h3 { font-family: 'Nunito', sans-serif; font-weight: 900; color: #fff; font-size: 1.45rem; line-height: 1.2; margin-bottom: 1.2rem; }
+    .hero-card-list { display: grid; gap: 0.7rem; margin-bottom: 1.5rem; }
+    .hero-card-list li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.93rem; color: rgba(255,255,255,0.88); list-style: none; font-weight: 500; }
+    .hero-card-list .num { width: 26px; height: 26px; background: var(--yellow); color: var(--blue-dark); border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.85rem; flex-shrink: 0; }
+    .hero-card-foot {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 1.1rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;
+    }
+    .hero-price { font-family: 'Nunito', sans-serif; }
+    .hero-price-amt { font-weight: 900; font-size: 1.9rem; color: var(--yellow); line-height: 1; letter-spacing: -0.02em; }
+    .hero-price-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 0.2rem; }
+
+    .next-batch {
+      display: flex; align-items: center; gap: 0.85rem;
+      background: linear-gradient(135deg, rgba(237,125,49,0.22), rgba(237,125,49,0.08));
+      border: 1.5px solid rgba(237,125,49,0.45);
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      margin-bottom: 1.2rem;
+    }
+    .next-batch-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .next-batch-lbl { font-family: 'Nunito', sans-serif; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); line-height: 1.2; }
+    .next-batch-date { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.05rem; color: #fff; line-height: 1.2; margin-top: 2px; }
+
+    /* ── MARQUEE ── */
+    .marquee {
+      background: var(--yellow);
+      border-top: 4px solid var(--blue-dark);
+      border-bottom: 4px solid var(--blue-dark);
+      overflow: hidden; padding: 0.9rem 0;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex; gap: 3rem; white-space: nowrap;
+      animation: scroll 30s linear infinite;
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: 1.05rem; color: var(--blue-dark);
+      letter-spacing: 0.02em; text-transform: uppercase;
+    }
+    .marquee-track span { display: inline-flex; align-items: center; gap: 1rem; }
+    .marquee-track .star { color: var(--orange); font-size: 1.3rem; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ── STATS ── */
-    .stats-band { background: var(--offwhite); border-bottom: 2px solid var(--border); display: grid; grid-template-columns: repeat(4,1fr); }
-    .stat-cell { padding: 1.7rem 1rem; text-align: center; border-right: 2px solid var(--border); }
+    .stats-band {
+      background: var(--white);
+      display: grid; grid-template-columns: repeat(4,1fr);
+      border-bottom: 2px solid var(--border);
+    }
+    .stat-cell {
+      padding: 2.2rem 1rem;
+      text-align: center;
+      border-right: 2px solid var(--border);
+      position: relative;
+    }
     .stat-cell:last-child { border-right: none; }
-    .stat-num { font-family: 'Nunito', sans-serif; font-size: 2.3rem; font-weight: 900; color: var(--blue); line-height: 1; }
-    .stat-num sup { font-size: 1.1rem; }
-    .stat-label { font-size: 0.79rem; color: var(--gray); margin-top: 0.3rem; line-height: 1.4; }
+    .stat-cell:nth-child(1) .stat-num { color: var(--blue); }
+    .stat-cell:nth-child(2) .stat-num { color: var(--orange); }
+    .stat-cell:nth-child(3) .stat-num { color: var(--yellow-deep); }
+    .stat-cell:nth-child(4) .stat-num { color: var(--green); }
+    .stat-num {
+      font-family: 'Nunito', sans-serif; font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-weight: 900; line-height: 1; letter-spacing: -0.03em;
+    }
+    .stat-num sup { font-size: 0.45em; vertical-align: 0.4em; }
+    .stat-label { font-size: 0.84rem; color: var(--gray); margin-top: 0.5rem; line-height: 1.45; font-weight: 600; }
 
-    /* ── SHARED SECTION STYLES ── */
-    section { padding: 4.5rem 5%; }
-    .bg-off { background: var(--offwhite); }
-    .section-tag { font-family: 'Nunito', sans-serif; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
-    h2.st { font-family: 'Nunito', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; color: var(--dark); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 0.7rem; }
+    /* ── SECTION SHARED ── */
+    section { padding: clamp(3.5rem, 6vw, 5.5rem) 5%; }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .bg-cream { background: var(--cream); }
+    .bg-blue-dark { background: var(--blue-dark); color: #fff; }
+    .bg-paper { background: var(--paper); }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem; font-weight: 900; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--orange);
+      background: rgba(237,125,49,0.1);
+      padding: 0.4rem 0.9rem; border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .bg-blue-dark .section-tag { color: var(--yellow); background: rgba(255,194,51,0.15); }
+
+    h2.st {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      font-weight: 900; color: var(--dark);
+      line-height: 1.05; letter-spacing: -0.025em;
+      margin-bottom: 0.9rem;
+      text-wrap: balance;
+    }
     h2.st em { font-style: normal; color: var(--blue); }
-    .section-sub { color: var(--gray); font-size: 0.95rem; max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; }
+    h2.st .hl-y { font-style: normal; color: var(--yellow-deep); }
+    h2.st .hl-m { font-style: normal; color: var(--orange); }
+    .bg-blue-dark h2.st { color: #fff; }
+    .bg-blue-dark h2.st em { color: var(--yellow); }
+    .section-sub {
+      color: var(--gray); font-size: 1rem;
+      max-width: 620px; line-height: 1.7;
+      margin-bottom: 2.6rem; font-weight: 500;
+    }
+    .bg-blue-dark .section-sub { color: rgba(255,255,255,0.78); }
 
-    /* ── ABOUT CARDS ── */
+    /* ── CURRICULUM (Hero of the page now) ── */
+    .modules { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+    .mod {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem;
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .mod:hover { transform: translateY(-4px); border-color: var(--blue); box-shadow: 0 12px 32px rgba(15,59,125,0.12); }
+    .mod-num {
+      position: absolute; top: -14px; left: 1.5rem;
+      width: 38px; height: 38px;
+      background: var(--blue); color: #fff;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.05rem;
+      box-shadow: 0 6px 16px rgba(31,91,173,0.3);
+    }
+    .mod:nth-child(1) .mod-num { background: var(--orange); box-shadow: 0 6px 16px rgba(237,125,49,0.35);}
+    .mod:nth-child(8) .mod-num { background: var(--yellow); color: var(--blue-dark); box-shadow: 0 6px 16px rgba(255,194,51,0.45); }
+    .mod-week {
+      font-family: 'Nunito', sans-serif; font-size: 0.72rem;
+      font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gray-lt); margin-bottom: 0.4rem; margin-top: 0.4rem;
+    }
+    .mod h4 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.45rem; line-height: 1.25; letter-spacing: -0.01em; }
+    .mod p { font-size: 0.9rem; color: var(--gray); line-height: 1.65; font-weight: 500; }
+
+    /* ── BENEFITS (full bleed colorful band) ── */
+    .benefits {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .benefits::before {
+      content: ''; position: absolute; top: -120px; right: -120px;
+      width: 380px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,194,51,0.18), transparent 70%);
+    }
+    .benefits::after {
+      content: ''; position: absolute; bottom: -100px; left: -100px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(237,125,49,0.2), transparent 70%);
+    }
+    .benefits .section-inner { position: relative; }
+    .benefits h2.st { color: #fff; }
+    .benefits h2.st em { color: var(--yellow); }
+    .benefits .section-tag { color: var(--yellow); background: rgba(255,194,51,0.15); }
+    .benefits .section-sub { color: rgba(255,255,255,0.78); }
     .diff-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; }
-    .diff-card { background: var(--white); border: 2px solid var(--border); border-radius: 14px; padding: 2rem 1.6rem; text-align: center; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
-    .diff-card:hover { border-color: var(--blue); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(31,91,173,0.1); }
-    .diff-icon { width: 62px; height: 62px; background: var(--blue-lt); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; margin: 0 auto 1rem; }
-    .diff-card h3 { font-family: 'Nunito', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
-    .diff-card p { font-size: 0.87rem; color: var(--gray); line-height: 1.65; }
-
-    /* ── HOW IT WORKS ── */
-    .hiw-box { background: var(--blue); border-radius: 18px; padding: 3.5rem; }
-    .hiw-box .section-tag { color: var(--yellow); }
-    .hiw-box h2.st { color: #fff; }
-    .hiw-box h2.st em { color: var(--yellow); }
-    .hiw-box .section-sub { color: rgba(255,255,255,0.78); }
-    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
-    .step { text-align: center; }
-    .step-num { width: 70px; height: 70px; background: var(--yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 900; color: #fff; margin: 0 auto 1rem; border: 4px solid rgba(255,255,255,0.25); }
-    .step h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 0.4rem; }
-    .step p { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.65; }
-
-    /* ── CURRICULUM ── */
-    .modules { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.1rem; }
-    .mod { background: var(--white); border: 2px solid var(--border); border-radius: 12px; padding: 1.5rem 1.3rem; transition: border-color 0.2s, box-shadow 0.2s; }
-    .mod:hover { border-color: var(--blue); box-shadow: 0 4px 18px rgba(31,91,173,0.1); }
-    .mod.feat { border-color: var(--blue); background: var(--blue-lt); }
-    .mod-week { font-family: 'Nunito', sans-serif; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--yellow); background: var(--yellow-lt); display: inline-block; padding: 0.18rem 0.6rem; border-radius: 20px; margin-bottom: 0.7rem; }
-    .mod h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.94rem; color: var(--dark); margin-bottom: 0.35rem; line-height: 1.3; }
-    .mod.feat h4 { color: var(--blue); }
-    .mod p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+    .diff-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(6px);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 1.9rem 1.6rem;
+      transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .diff-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.1); border-color: rgba(255,194,51,0.45); }
+    .diff-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.55rem; margin-bottom: 1rem;
+    }
+    .diff-card:nth-child(1) .diff-icon { background: var(--orange); }
+    .diff-card:nth-child(2) .diff-icon { background: var(--yellow); }
+    .diff-card:nth-child(3) .diff-icon { background: var(--green); }
+    .diff-card:nth-child(4) .diff-icon { background: var(--orange); }
+    .diff-card:nth-child(5) .diff-icon { background: var(--yellow); }
+    .diff-card:nth-child(6) .diff-icon { background: var(--green); }
+    .diff-card h3 { font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 900; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+    .diff-card p { font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.65; font-weight: 500; }
 
     /* ── RESULTS ── */
-    .results-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-    .rc { border-radius: 18px; padding: 2.5rem 2rem; text-align: center; }
-    .rc-blue { background: var(--blue); } .rc-yellow { background: var(--yellow); } .rc-green { background: var(--green); }
-    .rc-big { font-family: 'Nunito', sans-serif; font-size: 3.8rem; font-weight: 900; color: #fff; line-height: 1; }
-    .rc-big sup { font-size: 1.8rem; }
-    .rc-desc { font-size: 0.88rem; margin-top: 0.7rem; color: rgba(255,255,255,0.9); line-height: 1.6; }
+    .results-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; }
+    .rc {
+      border-radius: 22px;
+      padding: 2.6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .rc::before {
+      content: ''; position: absolute; top: -50px; right: -50px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+    .rc-blue { background: var(--blue); color: #fff; }
+    .rc-orange { background: var(--orange); color: #fff; }
+    .rc-green { background: var(--green); color: #fff; }
+    .rc-big { font-family: 'Nunito', sans-serif; font-size: clamp(3rem, 5vw, 4.3rem); font-weight: 900; line-height: 1; letter-spacing: -0.04em; position: relative; }
+    .rc-big sup { font-size: 0.45em; vertical-align: 0.6em; }
+    .rc-desc { font-size: 0.95rem; margin-top: 0.8rem; line-height: 1.55; opacity: 0.92; font-weight: 500; position: relative; }
 
-    /* ── CTA BAND ── */
-    .cta-band { background: var(--blue-lt); border-top: 2px solid var(--border); border-bottom: 2px solid var(--border); padding: 3.2rem 5%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .cta-band h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 900; color: var(--dark); max-width: 540px; line-height: 1.25; }
-    .cta-band h2 em { font-style: normal; color: var(--blue); }
-    .btn-blue { background: var(--blue); color: #fff; border: none; padding: 0.9rem 2rem; border-radius: 30px; font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; white-space: nowrap; }
-    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); }
-    .btn-yellow { background: var(--yellow); color: #fff; border: none; padding: 0.9rem 2rem; border-radius: 30px; font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; white-space: nowrap; box-shadow: 0 4px 16px rgba(245,166,35,0.3); }
-    .btn-yellow:hover { background: #d4881a; transform: translateY(-2px); }
+    /* ── CTA BAND (big register push) ── */
+    .cta-band {
+      background: var(--yellow);
+      padding: clamp(3rem, 5vw, 4.5rem) 5%;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .cta-band::before, .cta-band::after {
+      content: ''; position: absolute; border-radius: 50%;
+    }
+    .cta-band::before { width: 280px; height: 280px; background: var(--orange); top: -180px; left: -140px; opacity: 0.15; }
+    .cta-band::after { width: 240px; height: 240px; background: var(--blue); bottom: -160px; right: -120px; opacity: 0.15; }
+    .cta-inner { position: relative; max-width: 820px; margin: 0 auto; }
+    .cta-band h2 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(2rem, 4.2vw, 3.3rem);
+      font-weight: 900;
+      color: var(--blue-dark);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.7rem;
+      text-wrap: balance;
+    }
+    .cta-band h2 .hl { color: var(--orange); }
+    .cta-band p {
+      font-size: 1.05rem;
+      color: rgba(10, 42, 92, 0.78);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      font-weight: 600;
+    }
+    .cta-band p strong { color: var(--blue-dark); font-weight: 900; }
+    .cta-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+    .cta-band .btn-primary { background: var(--blue-dark); color: #fff; }
+    .cta-band .btn-primary:hover { background: var(--orange); }
+    .cta-band .btn-ghost { color: var(--blue-dark); border-color: rgba(15,42,92,0.3); }
+    .cta-band .btn-ghost:hover { background: rgba(15,42,92,0.06); border-color: var(--blue-dark); }
 
     /* ── INSTAGRAM ── */
-    .insta-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.8rem; flex-wrap: wrap; gap: 1rem; }
-    .insta-follow-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; padding: 0.6rem 1.2rem; border-radius: 30px; font-family: 'Nunito', sans-serif; font-size: 0.84rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s, transform 0.15s; }
-    .insta-follow-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-    .insta-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
-    .insta-card { background: var(--white); border: 2px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
-    .insta-card:hover { border-color: #cc2366; box-shadow: 0 6px 24px rgba(204,35,102,0.12); }
-    .insta-thumb { width: 100%; aspect-ratio: 16/10; background: var(--blue-lt); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; cursor: pointer; }
-    .insta-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .insta-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, var(--blue-lt), var(--blue-mid)); }
-    .insta-placeholder span { font-size: 2.4rem; }
-    .insta-placeholder small { font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--blue); }
-    .play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
-    .insta-thumb:hover .play-overlay { opacity: 1; }
-    .play-btn-circle { width: 50px; height: 50px; background: rgba(255,255,255,0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; padding-left: 3px; }
-    .insta-info { padding: 1rem 1.1rem 1.2rem; }
-    .insta-loc { font-size: 0.72rem; color: var(--gray-lt); margin-bottom: 0.25rem; }
-    .insta-info h4 { font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 800; color: var(--dark); margin-bottom: 0.25rem; line-height: 1.35; }
-    .insta-info p { font-size: 0.8rem; color: var(--gray); line-height: 1.55; }
-    .insta-view { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.6rem; font-size: 0.8rem; font-weight: 700; color: #cc2366; text-decoration: none; font-family: 'Nunito', sans-serif; }
-    .insta-view:hover { text-decoration: underline; }
-    .insta-hint { margin-top: 1.4rem; font-size: 0.8rem; color: var(--gray); background: var(--blue-lt); border: 1px dashed var(--blue-mid); border-radius: 8px; padding: 0.75rem 1rem; }
-    .insta-hint code { font-size: 0.78rem; background: rgba(31,91,173,0.1); padding: 0.1rem 0.3rem; border-radius: 4px; }
+    .insta-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .insta-follow-btn {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #fff; padding: 0.7rem 1.4rem; border-radius: 999px;
+      font-family: 'Nunito', sans-serif; font-size: 0.88rem; font-weight: 800;
+      text-decoration: none; transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 6px 18px rgba(204,35,102,0.3);
+    }
+    .insta-follow-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(204,35,102,0.4); }
+    .insta-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; align-items: start; justify-items: center; max-width: 1280px; margin: 0 auto; }
+    .ig-embed {
+      width: 100%; max-width: 300px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      min-height: 540px;
+    }
+    .ig-embed:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(237,125,49,0.18); }
+    .ig-embed iframe { width: 100%; height: 540px; border: none; display: block; }
+    .ig-placeholder {
+      height: 540px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem;
+      background: linear-gradient(135deg, var(--blue-lt), var(--blue-mid));
+      padding: 1.5rem; text-align: center;
+    }
+    .ig-placeholder .ig-icon { font-size: 2.4rem; }
+    .ig-placeholder .ig-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.95rem; color: var(--blue-dark); }
+    .ig-placeholder .ig-hint { font-size: 0.78rem; color: var(--gray); line-height: 1.5; max-width: 240px; }
+    .ig-placeholder .ig-loc { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.7rem; color: var(--orange); letter-spacing: 0.08em; text-transform: uppercase; }
 
     /* ── TESTIMONIALS ── */
-    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; }
-    .tc { background: var(--white); border: 2px solid var(--border); border-radius: 14px; padding: 1.8rem; transition: border-color 0.2s; }
-    .tc:hover { border-color: var(--blue); }
-    .tc-stars { color: var(--yellow); font-size: 1rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
-    .tc blockquote { font-size: 0.9rem; color: var(--dark); line-height: 1.7; font-style: italic; margin-bottom: 1.1rem; }
-    .tc-author { display: flex; align-items: center; gap: 0.7rem; }
-    .tc-av { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.85rem; color: #fff; flex-shrink: 0; }
-    .av-b { background: var(--blue); } .av-y { background: var(--yellow); } .av-g { background: var(--green); }
-    .tc-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--dark); }
-    .tc-role { font-size: 0.75rem; color: var(--gray); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
+    .tc {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem 1.8rem;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .tc:hover { transform: translateY(-3px); border-color: var(--yellow); box-shadow: 0 12px 28px rgba(245,166,35,0.18); }
+    .tc-quote { position: absolute; top: -16px; left: 1.8rem; font-family: 'Nunito', sans-serif; font-size: 4rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+    .tc-stars { color: var(--yellow-deep); font-size: 1.05rem; margin-bottom: 0.8rem; letter-spacing: 2px; margin-top: 0.5rem; }
+    .tc blockquote { font-size: 0.95rem; color: var(--dark); line-height: 1.7; margin-bottom: 1.3rem; font-weight: 500; }
+    .tc-author { display: flex; align-items: center; gap: 0.8rem; }
+    .tc-av { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.95rem; color: #fff; flex-shrink: 0; }
+    .av-b { background: var(--blue); } .av-y { background: var(--yellow-deep); } .av-g { background: var(--green); }
+    .tc-name { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.95rem; color: var(--dark); }
+    .tc-role { font-size: 0.78rem; color: var(--gray); }
 
     /* ── FOOTER LOCATIONS ── */
-    .footer-locations { background: var(--dark); padding: 3.5rem 5% 0; }
-    .footer-loc-title { font-family: 'Nunito', sans-serif; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--yellow); margin-bottom: 1.8rem; text-align: center; }
+    .footer-locations {
+      background: var(--darker);
+      padding: 4rem 5% 0;
+      position: relative;
+    }
+    .footer-loc-title {
+      font-family: 'Nunito', sans-serif; font-size: 0.82rem;
+      font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--yellow); margin-bottom: 0.5rem; text-align: center;
+    }
+    .footer-loc-h2 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.5rem); font-weight: 900;
+      color: #fff; text-align: center; margin-bottom: 2.5rem;
+      letter-spacing: -0.02em;
+    }
+    .footer-loc-h2 em { font-style: normal; color: var(--yellow); }
     .loc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .loc-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1.8rem; transition: border-color 0.2s; }
-    .loc-card:hover { border-color: rgba(245,166,35,0.4); }
-    .loc-name { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #fff; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .loc-row { display: flex; align-items: flex-start; gap: 0.55rem; margin-bottom: 0.65rem; }
-    .loc-row .ic { font-size: 0.9rem; margin-top: 0.1rem; flex-shrink: 0; }
-    .loc-row p, .loc-row a { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.5; text-decoration: none; }
-    .loc-row a:hover { color: #fff; }
-    .loc-hours { margin-top: 0.9rem; }
-    .loc-hours h5 { font-family: 'Nunito', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 0.35rem; }
-    .hour-row { display: flex; justify-content: space-between; font-size: 0.79rem; color: rgba(255,255,255,0.6); padding: 0.18rem 0; }
-    .loc-social { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
-    .soc-btn { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.32rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-decoration: none; font-family: 'Nunito', sans-serif; transition: opacity 0.2s; }
-    .soc-btn:hover { opacity: 0.85; }
+    .loc-card {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 2rem 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .loc-card:hover { border-color: var(--yellow); transform: translateY(-3px); }
+    .loc-name { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.05rem; color: #fff; margin-bottom: 1.1rem; padding-bottom: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .loc-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.7rem; }
+    .loc-row .ic { font-size: 0.95rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .loc-row p, .loc-row a { font-size: 0.86rem; color: rgba(255,255,255,0.7); line-height: 1.55; text-decoration: none; font-weight: 500; }
+    .loc-row a:hover { color: var(--yellow); }
+    .loc-hours { margin-top: 1rem; }
+    .loc-hours h5 { font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow); margin-bottom: 0.4rem; }
+    .hour-row { display: flex; justify-content: space-between; font-size: 0.82rem; color: rgba(255,255,255,0.65); padding: 0.2rem 0; font-weight: 500; }
+    .loc-social { display: flex; gap: 0.5rem; margin-top: 1.1rem; flex-wrap: wrap; }
+    .soc-btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; border-radius: 999px; font-size: 0.78rem; font-weight: 800; text-decoration: none; font-family: 'Nunito', sans-serif; transition: transform 0.15s, opacity 0.2s; }
+    .soc-btn:hover { transform: translateY(-1px); opacity: 0.92; }
     .soc-fb { background: #1877f2; color: #fff; }
     .soc-ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
     .soc-gm { background: #fff; color: var(--dark); }
-    .loc-reg { display: block; margin-top: 1rem; background: var(--yellow); color: #fff; text-align: center; padding: 0.55rem; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 800; text-decoration: none; transition: background 0.2s; }
-    .loc-reg:hover { background: #d4881a; }
-    .map-embed { width: 100%; height: 130px; border: none; border-radius: 8px; margin-top: 0.8rem; filter: grayscale(15%); }
+    .loc-reg { display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 1.2rem; background: var(--yellow); color: var(--blue-dark); text-align: center; padding: 0.7rem; border-radius: 12px; font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 900; text-decoration: none; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(255,194,51,0.25); }
+    .loc-reg:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(255,194,51,0.4); }
+    .map-embed { width: 100%; height: 130px; border: none; border-radius: 10px; margin-top: 1rem; filter: grayscale(20%); }
 
-    .footer-bottom { background: #111827; padding: 1.4rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-    .ft-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.05rem; color: #fff; }
+    .footer-bottom { background: #000; padding: 1.5rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .ft-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; color: #fff; }
     .ft-logo span { color: var(--yellow); }
-    .footer-bottom p { font-size: 0.77rem; color: rgba(255,255,255,0.38); }
-    .footer-bottom a { color: rgba(255,255,255,0.38); font-size: 0.77rem; text-decoration: none; }
-    .footer-bottom a:hover { color: #fff; }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 500; }
+    .footer-bottom a { color: rgba(255,255,255,0.5); font-size: 0.8rem; text-decoration: none; font-weight: 600; }
+    .footer-bottom a:hover { color: var(--yellow); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      .diff-grid { grid-template-columns: 1fr 1fr; }
-      .modules { grid-template-columns: 1fr 1fr; }
-      .results-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .testi-grid { grid-template-columns: 1fr; }
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .stats-band { grid-template-columns: repeat(2,1fr); }
-      .steps { grid-template-columns: 1fr; }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(1), .stat-cell:nth-child(2) { border-bottom: 2px solid var(--border); }
+      .modules { grid-template-columns: 1fr 1fr; }
+      .diff-grid { grid-template-columns: 1fr 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .insta-grid { grid-template-columns: 1fr 1fr; }
       .loc-grid { grid-template-columns: 1fr; }
-      .insta-grid { grid-template-columns: repeat(2,1fr); }
-      .hiw-box { padding: 2.5rem 1.5rem; }
-      .facts-strip { gap: 0; }
-      .fact-pill { font-size: 0.82rem; padding: 0.45rem 0.9rem; }
+      .nav-links { gap: 1.1rem; }
     }
-    @media (max-width: 640px) {
-      .diff-grid { grid-template-columns: 1fr; }
-      .modules { grid-template-columns: 1fr; }
-      .insta-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      section { padding: 3rem 4%; }
-      .cta-band { text-align: center; justify-content: center; }
-      .top-bar { justify-content: center; text-align: center; }
+    @media (max-width: 720px) {
+      .top-bar { font-size: 0.74rem; flex-direction: column; gap: 0.2rem; text-align: center; }
+      .top-bar-left { font-size: 0.74rem; }
       .top-bar-right { justify-content: center; }
-      .hero-banner { max-height: 180px; }
-      .facts-strip { flex-direction: column; gap: 0.2rem; padding: 0.8rem 4%; }
-      .fact-pill { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); width: 100%; justify-content: center; padding: 0.5rem; }
-      .fact-pill:last-child { border-bottom: none; }
+      .top-bar-right a { padding: 0 0.7rem; font-size: 0.74rem; }
+      nav { height: 64px; padding: 0 4%; }
+      .logo-img { height: 38px; }
+      .nav-links { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1.2rem; gap: 0.4rem; box-shadow: 0 12px 24px rgba(0,0,0,0.1); border-bottom: 3px solid var(--blue); align-items: stretch; z-index: 99; }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 0.85rem 0.5rem; border-bottom: 1px solid var(--border); font-size: 1rem; }
+      .nav-links a.nav-cta { text-align: center; margin-top: 0.5rem; border: none; }
+      .mobile-toggle { display: flex; }
+
+      .hero { padding: 2.5rem 5% 3rem; }
+      .hero h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
+      .hero-card { padding: 1.6rem; }
+      .hero-card h3 { font-size: 1.25rem; }
+      .btn { font-size: 0.95rem; padding: 0.95rem 1.5rem; }
+      .hero-cta-row .btn { width: 100%; justify-content: center; }
+      .hero-meta { gap: 0.9rem; flex-direction: column; }
+
+      .marquee-track { font-size: 0.88rem; gap: 2rem; }
+      .stats-band { grid-template-columns: 1fr 1fr; }
+      .stat-cell { padding: 1.5rem 0.6rem; }
+      .stat-num { font-size: 2rem; }
+      .stat-label { font-size: 0.76rem; }
+
+      section { padding: 3rem 5%; }
+      h2.st { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+      .section-sub { font-size: 0.94rem; margin-bottom: 1.8rem; }
+
+      .modules { grid-template-columns: 1fr; gap: 1.4rem; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .insta-grid { grid-template-columns: 1fr; }
+
+      .cta-band h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+
+      .footer-locations { padding: 3rem 5% 0; }
+      .footer-bottom { justify-content: center; text-align: center; }
     }
   </style>
 </head>
@@ -255,312 +616,172 @@
 <div class="top-bar">
   <span class="top-bar-left">📍 Best Brains Learning Centers — Surrey, BC</span>
   <div class="top-bar-right">
-    <a href="tel:7786284516">Fleetwood: (778) 628-4516</a>
-    <a href="tel:7786744516">Clayton: (778) 674-4516</a>
-    <a href="tel:7788771781">City Centre: (778) 877-1781</a>
+    <a href="tel:7786284516">Fleetwood · (778) 628-4516</a>
+    <a href="tel:7786744516">Clayton · (778) 674-4516</a>
+    <a href="tel:7788771781">City Centre · (778) 877-1781</a>
   </div>
 </div>
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="#" class="logo">
-    <div class="logo-icon">BB</div>
-    <div class="logo-text">
-      Best Brains
-      <span class="logo-sub">Surrey Locations</span>
-    </div>
+  <a href="#" class="logo" aria-label="Best Brains Learning Center">
+    <img src="assets/bestbrains-logo.png" alt="Best Brains Learning Center" class="logo-img" />
   </a>
+  <button class="mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#benefits">Benefits</a></li>
     <li><a href="#highlights">Highlights</a></li>
     <li><a href="#locations">Locations</a></li>
-    <li><a href="#locations" class="nav-cta">Register Free</a></li>
+    <li><a href="#register" class="nav-cta">Register Now</a></li>
   </ul>
 </nav>
 
-<!-- ── HERO BANNER ── -->
+<!-- ── PNG BANNER (kept) ── -->
 <img
-  src="/PUBLIC_SPEAKING_WEB_BANNER.png"
-  alt="Public Speaking — The Speech League. Grades 2–6, 6-week courses. Increases confidence, cultivates social skills, conquers the most common phobia, promotes communication skills."
+  src="PUBLIC_SPEAKING_WEB_BANNER.png"
+  alt="Public Speaking at Best Brains. Grades 2–7, 8-week courses."
   class="hero-banner"
 />
 
-<!-- ── QUICK FACTS STRIP ── -->
-<div class="facts-strip">
-  <div class="fact-pill"><span class="fi">🎓</span> Grades 2–6</div>
-  <div class="fact-pill"><span class="fi">📅</span> 6-Week Courses</div>
-  <div class="fact-pill"><span class="fi">💪</span> Increases Confidence</div>
-  <div class="fact-pill"><span class="fi">🤝</span> Cultivates Social Skills</div>
-  <div class="fact-pill"><span class="fi">🎤</span> Conquers Stage Fright</div>
-  <div class="fact-pill"><span class="fi">💬</span> Promotes Communication</div>
+<!-- ── NEW HTML HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Now enrolling · Grades 2–7</div>
+      <h1>
+        Turn shy kids into <span class="accent-y">confident</span> <span class="accent-m">speakers</span> in&nbsp;8&nbsp;weeks.
+      </h1>
+      <p class="lead">
+        Our Public Speaking program is hands-on and designed for elementary students.
+        Small groups, certified teachers, and a live showcase at the end — your child will never sound the same again.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#register" class="btn btn-primary">Register for the 8-Week Course →</a>
+        <a href="#benefits" class="btn btn-ghost">Why public speaking?</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span class="checkmark">✓</span> <strong>Starts</strong>&nbsp;June 8, 2026</div>
+        <div class="hero-meta-item"><span class="checkmark">✓</span> <strong>Max 6</strong>&nbsp;students per teacher</div>
+        <div class="hero-meta-item"><span class="checkmark">✓</span> <strong>3</strong>&nbsp;Surrey locations</div>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <div class="hero-card-tag">Public Speaking · At a glance</div>
+      <h3>An 8-week course built for real, lasting growth.</h3>
+      <ul class="hero-card-list">
+        <li><span class="num">1</span><span>Confident speaker mindset &amp; voice fundamentals</span></li>
+        <li><span class="num">2</span><span>Storytelling, structure &amp; persuasion</span></li>
+        <li><span class="num">3</span><span>Live showcase in front of family &amp; friends</span></li>
+      </ul>
+      <div class="next-batch">
+        <div class="next-batch-icon">📅</div>
+        <div>
+          <div class="next-batch-lbl">Next batch starts</div>
+          <div class="next-batch-date">June 8, 2026</div>
+        </div>
+      </div>
+      <div class="hero-card-foot">
+        <div class="hero-price">
+          <div class="hero-price-amt">$259</div>
+          <div class="hero-price-lbl">all 8 weeks · 90 min/session</div>
+        </div>
+        <a href="#register" class="btn btn-orange" style="padding: 0.7rem 1.2rem; font-size: 0.88rem;">Reserve a Seat</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span><span class="star">★</span> Grades 2–7</span>
+    <span><span class="star">★</span> 8-Week Courses</span>
+    <span><span class="star">★</span> Increases Confidence</span>
+    <span><span class="star">★</span> Cultivates Social Skills</span>
+    <span><span class="star">★</span> Conquers Stage Fright</span>
+    <span><span class="star">★</span> Promotes Communication</span>
+    <span><span class="star">★</span> Grades 2–7</span>
+    <span><span class="star">★</span> 8-Week Courses</span>
+    <span><span class="star">★</span> Increases Confidence</span>
+    <span><span class="star">★</span> Cultivates Social Skills</span>
+    <span><span class="star">★</span> Conquers Stage Fright</span>
+    <span><span class="star">★</span> Promotes Communication</span>
+  </div>
 </div>
 
-<!-- ── STATS ── -->
-<div class="stats-band">
-  <div class="stat-cell"><div class="stat-num">500<sup>+</sup></div><div class="stat-label">Students trained<br/>across Surrey</div></div>
-  <div class="stat-cell"><div class="stat-num">96<sup>%</sup></div><div class="stat-label">Report higher<br/>confidence at school</div></div>
-  <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label">Weeks to real,<br/>lasting results</div></div>
-  <div class="stat-cell"><div class="stat-num">4:1</div><div class="stat-label">Student-to-teacher<br/>ratio max</div></div>
-</div>
 
-<!-- ── ABOUT ── -->
-<section id="about">
-  <div class="section-tag">Why The Speech League</div>
-  <h2 class="st">More Than Just <em>Talking</em></h2>
-  <p class="section-sub">Public speaking is one of the most valuable life skills a child can develop. The Speech League program gives kids the tools to think on their feet, express ideas clearly, and walk into any room with confidence.</p>
-  <div class="diff-grid">
-    <div class="diff-card"><div class="diff-icon">💬</div><h3>Effective Communication</h3><p>Children learn to express their ideas clearly, persuasively, and with purpose — in class and in life.</p></div>
-    <div class="diff-card"><div class="diff-icon">💪</div><h3>Increases Confidence</h3><p>Through practice and encouragement, students overcome the fear of speaking in front of others.</p></div>
-    <div class="diff-card"><div class="diff-icon">🤝</div><h3>Social &amp; Life Skills</h3><p>Active listening, empathy, and connection — skills that make children better friends, students, and leaders.</p></div>
-    <div class="diff-card"><div class="diff-icon">🧠</div><h3>Conquers the #1 Phobia</h3><p>Public speaking is the most common phobia. We tackle it early — before it becomes a barrier.</p></div>
-    <div class="diff-card"><div class="diff-icon">🏅</div><h3>BC-Certified Teachers</h3><p>Every class led by experienced educators with expertise in child development and speech coaching.</p></div>
-    <div class="diff-card"><div class="diff-icon">👥</div><h3>Small, Safe Groups</h3><p>Max 4 students per teacher — every child gets real practice time and personalized feedback.</p></div>
-  </div>
-</section>
 
-<!-- ── HOW IT WORKS ── -->
-<section class="bg-off">
-  <div class="hiw-box">
-    <div class="section-tag">How it works</div>
-    <h2 class="st">As Easy as <em>1 · 2 · 3</em></h2>
-    <p class="section-sub">Getting your child started is simple — and the first class is always free.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h4>Free Trial Class</h4>
-        <p>Book a complimentary orientation at your nearest Surrey location. No commitment, no pressure.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h4>6 Weekly Sessions</h4>
-        <p>Your child joins their small group each week, building skills progressively through our structured Speech League curriculum.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h4>Live Showcase</h4>
-        <p>Celebrate at our end-of-program showcase — a live performance in front of family and friends they'll never forget!</p>
-      </div>
+
+
+<!-- ── BENEFITS ── -->
+<section id="benefits" class="benefits">
+  <div class="section-inner">
+    <div class="section-tag">Why Public Speaking</div>
+    <h2 class="st">More than just <em>talking.</em></h2>
+    <p class="section-sub">Public speaking is one of the most valuable life skills a child can develop. We give kids the tools to think on their feet, express ideas clearly, and walk into any room with confidence.</p>
+    <div class="diff-grid">
+      <div class="diff-card"><div class="diff-icon">💬</div><h3>Effective Communication</h3><p>Children learn to express their ideas clearly, persuasively, and with purpose — in class and in life.</p></div>
+      <div class="diff-card"><div class="diff-icon">💪</div><h3>Builds Real Confidence</h3><p>Through practice and encouragement, students overcome the fear of speaking in front of others.</p></div>
+      <div class="diff-card"><div class="diff-icon">🤝</div><h3>Social &amp; Life Skills</h3><p>Active listening, empathy, and connection — skills that make children better friends, students, and leaders.</p></div>
+      <div class="diff-card"><div class="diff-icon">🧠</div><h3>Conquers the #1 Phobia</h3><p>Public speaking is the most common phobia. We tackle it early — before it becomes a barrier.</p></div>
+      <div class="diff-card"><div class="diff-icon">🏅</div><h3>Certified Teachers</h3><p>Every class led by experienced educators with expertise in child development and speech teaching.</p></div>
+      <div class="diff-card"><div class="diff-icon">👥</div><h3>Small, Safe Groups</h3><p>Max 6 students per teacher — every child gets real practice time and personalized feedback.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ── CURRICULUM ── -->
-<section id="curriculum">
-  <div class="section-tag">Course curriculum · Grades 2–6</div>
-  <h2 class="st">6 Weeks. Built for <em>Real Growth.</em></h2>
-  <p class="section-sub">A progressive, hands-on curriculum that takes students from nervous beginners to confident, compelling speakers in just 6 weeks.</p>
-  <div class="modules">
-    <div class="mod feat">
-      <div class="mod-week">Week 1</div>
-      <h4>The Confident Speaker Mindset</h4>
-      <p>Understanding nerves, building speaker identity, and learning why public speaking is a superpower worth mastering.</p>
-    </div>
-    <div class="mod">
-      <div class="mod-week">Week 2</div>
-      <h4>Voice, Body &amp; Presence</h4>
-      <p>Vocal variety, posture, eye contact, gestures — and how to use silence like a pro.</p>
-    </div>
-    <div class="mod">
-      <div class="mod-week">Week 3</div>
-      <h4>Storytelling That Sticks</h4>
-      <p>Crafting personal stories with a clear beginning, middle, and ending that captivates any audience.</p>
-    </div>
-    <div class="mod">
-      <div class="mod-week">Week 4</div>
-      <h4>Structuring a Speech</h4>
-      <p>A simple, repeatable framework kids can use for class presentations, debates, and beyond.</p>
-    </div>
-    <div class="mod">
-      <div class="mod-week">Week 5</div>
-      <h4>Connecting With Your Audience</h4>
-      <p>Reading the room, using humour, and making every single listener feel seen and engaged.</p>
-    </div>
-    <div class="mod feat">
-      <div class="mod-week">Week 6</div>
-      <h4>Live Showcase Performance</h4>
-      <p>A full speech delivered live in front of family and friends — the most exciting day of the course!</p>
-    </div>
-  </div>
-</section>
 
-<!-- ── RESULTS ── -->
-<section class="bg-off">
-  <div class="section-tag">Our results</div>
-  <h2 class="st">Numbers That Speak <em>For Themselves</em></h2>
-  <p class="section-sub">Real outcomes reported by families across our three Surrey Best Brains locations.</p>
-  <div class="results-grid">
-    <div class="rc rc-blue"><div class="rc-big">96<sup>%</sup></div><div class="rc-desc">of students feel more confident speaking in class within the first 3 months</div></div>
-    <div class="rc rc-yellow"><div class="rc-big">360<sup>°</sup></div><div class="rc-desc">whole-child development — confidence, listening, critical thinking &amp; social skills</div></div>
-    <div class="rc rc-green"><div class="rc-big">90<sup>%</sup></div><div class="rc-desc">of parents report improved grades in language arts &amp; social studies within one semester</div></div>
-  </div>
-</section>
 
 <!-- ── CTA BAND ── -->
-<div class="cta-band">
-  <h2>Your child's <em>confidence journey</em> starts today</h2>
-  <a href="#locations" class="btn-yellow">Book a Free Trial Class →</a>
+<div class="cta-band" id="register">
+  <div class="cta-inner">
+    <h2>Ready to register for the <span class="hl">8-week course?</span></h2>
+    <p>Next batch starts <strong>June 8, 2026</strong> · <strong>$259</strong> for the full program. Seats fill quickly — pick a Surrey location below and book your child's spot today.</p>
+    <div class="cta-actions">
+      <a href="#locations" class="btn btn-primary">Register at a Location ↓</a>
+      <a href="tel:7786284516" class="btn btn-ghost">📞 Call to enroll</a>
+    </div>
+  </div>
 </div>
 
 <!-- ── INSTAGRAM HIGHLIGHTS ── -->
-<section id="highlights">
-  <div class="insta-header">
-    <div>
-      <div class="section-tag">Past program highlights</div>
-      <h2 class="st">See Our <em>Students in Action</em></h2>
-      <p class="section-sub" style="margin-bottom:0">Moments from past Speech League events and showcases across our Surrey locations. Click any card to watch on Instagram.</p>
-    </div>
-    <a href="https://www.instagram.com/bestbrainsfleetwood/" target="_blank" rel="noopener" class="insta-follow-btn">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      Follow on Instagram
-    </a>
-  </div>
-
-  <div class="insta-grid">
-
-    <!-- ─ POST 1 ─ Replace placeholder with real thumbnail img tag and update href ─ -->
-    <div class="insta-card">
-      <a href="https://www.instagram.com/bestbrainsfleetwood/" target="_blank" rel="noopener">
-        <div class="insta-thumb">
-          <div class="insta-placeholder"><span>🎤</span><small>Add your photo or video</small></div>
-          <div class="play-overlay"><div class="play-btn-circle">▶</div></div>
-        </div>
+<section id="highlights" class="bg-paper">
+  <div class="section-inner">
+    <div class="insta-header">
+      <div>
+        <div class="section-tag">Past program highlights</div>
+        <h2 class="st">See our students <em>in action.</em></h2>
+        <p class="section-sub" style="margin-bottom:0">Moments from past Public Speaking showcases across our Surrey locations.</p>
+      </div>
+      <a href="https://www.instagram.com/bestbrainsfleetwood/" target="_blank" rel="noopener" class="insta-follow-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Follow on Instagram
       </a>
-      <div class="insta-info">
-        <div class="insta-loc">📍 Surrey Fleetwood · Spring 2024</div>
-        <h4>Speech League Showcase — Spring 2024</h4>
-        <p>Students delivered their final speeches to a packed room of proud parents at Fleetwood!</p>
-        <a href="https://www.instagram.com/bestbrainsfleetwood/" target="_blank" rel="noopener" class="insta-view">Watch on Instagram ↗</a>
-      </div>
     </div>
 
-    <!-- ─ POST 2 ─ -->
-    <div class="insta-card">
-      <a href="https://www.instagram.com/bestbrainsclayton/" target="_blank" rel="noopener">
-        <div class="insta-thumb">
-          <div class="insta-placeholder"><span>🎙️</span><small>Add your photo or video</small></div>
-          <div class="play-overlay"><div class="play-btn-circle">▶</div></div>
-        </div>
-      </a>
-      <div class="insta-info">
-        <div class="insta-loc">📍 Surrey Clayton · Fall 2023</div>
-        <h4>Debate Night — Clayton Fall 2023</h4>
-        <p>Kids went head-to-head in a friendly debate — the confidence on display was incredible.</p>
-        <a href="https://www.instagram.com/bestbrainsclayton/" target="_blank" rel="noopener" class="insta-view">Watch on Instagram ↗</a>
-      </div>
-    </div>
-
-    <!-- ─ POST 3 ─ -->
-    <div class="insta-card">
-      <a href="https://www.instagram.com/bestbrainssurreycentral" target="_blank" rel="noopener">
-        <div class="insta-thumb">
-          <div class="insta-placeholder"><span>🏆</span><small>Add your photo or video</small></div>
-          <div class="play-overlay"><div class="play-btn-circle">▶</div></div>
-        </div>
-      </a>
-      <div class="insta-info">
-        <div class="insta-loc">📍 Surrey City Centre · Winter 2024</div>
-        <h4>Year-End Showcase — City Centre</h4>
-        <p>A truly unforgettable evening — every single student owned the stage!</p>
-        <a href="https://www.instagram.com/bestbrainssurreycentral" target="_blank" rel="noopener" class="insta-view">Watch on Instagram ↗</a>
-      </div>
-    </div>
-
-    <!-- ─ POST 4 ─ -->
-    <div class="insta-card">
-      <a href="https://www.instagram.com/bestbrainsfleetwood/" target="_blank" rel="noopener">
-        <div class="insta-thumb">
-          <div class="insta-placeholder"><span>🌞</span><small>Add your photo or video</small></div>
-        </div>
-      </a>
-      <div class="insta-info">
-        <div class="insta-loc">📍 Surrey Fleetwood · Summer 2023</div>
-        <h4>Summer Camp Speech Module</h4>
-        <p>Part of our summer camp — kids learned to tell stories that captivate any audience.</p>
-        <a href="https://www.instagram.com/bestbrainsfleetwood/" target="_blank" rel="noopener" class="insta-view">See on Instagram ↗</a>
-      </div>
-    </div>
-
-    <!-- ─ POST 5 ─ -->
-    <div class="insta-card">
-      <a href="https://www.instagram.com/bestbrainsclayton/" target="_blank" rel="noopener">
-        <div class="insta-thumb">
-          <div class="insta-placeholder"><span>🎉</span><small>Add your photo or video</small></div>
-        </div>
-      </a>
-      <div class="insta-info">
-        <div class="insta-loc">📍 All Locations · Spring 2023</div>
-        <h4>First Multi-Location Showcase</h4>
-        <p>Students from all three Surrey locations came together for our biggest Speech League event yet.</p>
-        <a href="https://www.instagram.com/bestbrainsclayton/" target="_blank" rel="noopener" class="insta-view">See on Instagram ↗</a>
-      </div>
-    </div>
-
-    <!-- ─ POST 6 ─ -->
-    <div class="insta-card">
-      <a href="https://www.instagram.com/bestbrainssurreycentral" target="_blank" rel="noopener">
-        <div class="insta-thumb">
-          <div class="insta-placeholder"><span>✨</span><small>Add your photo or video</small></div>
-        </div>
-      </a>
-      <div class="insta-info">
-        <div class="insta-loc">📍 Surrey City Centre · Fall 2022</div>
-        <h4>Our Very First Speech League Cohort</h4>
-        <p>Where it all started — 8 brave young speakers who showed everyone what was possible.</p>
-        <a href="https://www.instagram.com/bestbrainssurreycentral" target="_blank" rel="noopener" class="insta-view">See on Instagram ↗</a>
-      </div>
-    </div>
-
-  </div>
-
-  <p class="insta-hint">
-    💡 <strong>To add a real Instagram post:</strong> Replace the <code>&lt;div class="insta-placeholder"&gt;</code> block with <code>&lt;img src="YOUR_THUMBNAIL_URL" alt="..."&gt;</code> and update the <code>href</code> links to your actual Instagram post URLs.
-  </p>
-</section>
-
-<!-- ── TESTIMONIALS ── -->
-<section class="bg-off">
-  <div class="section-tag">Parent reviews</div>
-  <h2 class="st">Hear from Our <em>Surrey Families</em></h2>
-  <p class="section-sub">What parents across our Fleetwood, Clayton, and City Centre locations are saying about The Speech League.</p>
-  <div class="testi-grid">
-    <div class="tc">
-      <div class="tc-stars">★★★★★</div>
-      <blockquote>"My daughter used to freeze up every time her teacher called on her. After just 6 weeks, she volunteered to do the morning announcements. I couldn't believe it."</blockquote>
-      <div class="tc-author">
-        <div class="tc-av av-b">SL</div>
-        <div><div class="tc-name">Sarah L.</div><div class="tc-role">Parent · Best Brains Fleetwood</div></div>
-      </div>
-    </div>
-    <div class="tc">
-      <div class="tc-stars">★★★★★</div>
-      <blockquote>"The instructors are patient, encouraging, and really know how to make kids feel safe to speak up. Our son looks forward to every single class."</blockquote>
-      <div class="tc-author">
-        <div class="tc-av av-y">MK</div>
-        <div><div class="tc-name">Mark K.</div><div class="tc-role">Parent · Best Brains Clayton</div></div>
-      </div>
-    </div>
-    <div class="tc">
-      <div class="tc-stars">★★★★★</div>
-      <blockquote>"We saw a difference almost immediately. She's more articulate, more confident, and genuinely happier at school. Best decision we've made for her education."</blockquote>
-      <div class="tc-author">
-        <div class="tc-av av-g">RP</div>
-        <div><div class="tc-name">Riya P.</div><div class="tc-role">Parent · Best Brains City Centre</div></div>
-      </div>
+    <div class="insta-grid">
+      <!-- To embed: set data-url to the Instagram post / reel URL, e.g. https://www.instagram.com/reel/XXXX/ -->
+      <div class="ig-embed" data-url="https://www.instagram.com/reel/DXibeM9jJLg/" data-loc="Behind the scenes" data-hint="Behind-the-scenes reel."></div>
+      <div class="ig-embed" data-url="https://www.instagram.com/reel/DXGI_sEvJtK/" data-loc="Behind the scenes" data-hint="Behind-the-scenes reel."></div>
+      <div class="ig-embed" data-url="https://www.instagram.com/reel/DW6_1wdD_pn/" data-loc="Showcase event" data-hint="Showcase event reel."></div>
+      <div class="ig-embed" data-url="https://www.instagram.com/reel/DXGIwKxEnhA/" data-loc="Showcase event" data-hint="Showcase event reel."></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     SHARED FOOTER — ALL 3 LOCATIONS
-══════════════════════════════════════ -->
+
+
+<!-- ── FOOTER LOCATIONS ── -->
 <div class="footer-locations" id="locations">
-  <div class="footer-loc-title">Our Three Surrey Locations — Find Yours &amp; Register</div>
+  <div class="footer-loc-title">Register at your closest Surrey location</div>
+  <h2 class="footer-loc-h2">Three Surrey locations — <em>one big stage.</em></h2>
   <div class="loc-grid">
 
-    <!-- FLEETWOOD -->
     <div class="loc-card">
-      <div class="loc-name">📍 Best Brains — Surrey Fleetwood</div>
+      <div class="loc-name">📍 Surrey Fleetwood</div>
       <div class="loc-row"><span class="ic">🏢</span><p>16055 Fraser Hwy, Unit 101<br/>Surrey, BC V4N 0G3</p></div>
       <div class="loc-row"><span class="ic">📞</span><a href="tel:7786284516">(778) 628-4516</a></div>
       <div class="loc-row"><span class="ic">✉️</span><a href="mailto:surreyfleetwood@bestbrains.com">surreyfleetwood@bestbrains.com</a></div>
@@ -580,9 +801,8 @@
       <a href="https://bestbrains.com/ca-en/surrey-fleetwood/new-registration" target="_blank" rel="noopener" class="loc-reg">Register at Fleetwood →</a>
     </div>
 
-    <!-- CLAYTON -->
     <div class="loc-card">
-      <div class="loc-name">📍 Best Brains — Surrey Clayton</div>
+      <div class="loc-name">📍 Surrey Clayton</div>
       <div class="loc-row"><span class="ic">🏢</span><p>6820 188 Street, Unit 205<br/>Surrey, BC V4N 3G6</p></div>
       <div class="loc-row"><span class="ic">📞</span><a href="tel:7786744516">(778) 674-4516</a></div>
       <div class="loc-row"><span class="ic">✉️</span><a href="mailto:surreyclayton@bestbrains.com">surreyclayton@bestbrains.com</a></div>
@@ -602,9 +822,8 @@
       <a href="https://bestbrains.com/ca-en/surrey-clayton/new-registration" target="_blank" rel="noopener" class="loc-reg">Register at Clayton →</a>
     </div>
 
-    <!-- CITY CENTRE -->
     <div class="loc-card">
-      <div class="loc-name">📍 Best Brains — Surrey City Centre</div>
+      <div class="loc-name">📍 Surrey City Centre</div>
       <div class="loc-row"><span class="ic">🏢</span><p>10070 King George Blvd, Unit 210<br/>Surrey, BC V3T 2W4</p></div>
       <div class="loc-row"><span class="ic">📞</span><a href="tel:7788771781">(778) 877-1781</a></div>
       <div class="loc-row"><span class="ic">✉️</span><a href="mailto:surreycitycentre@bestbrains.com">surreycitycentre@bestbrains.com</a></div>
@@ -628,10 +847,38 @@
 </div>
 
 <div class="footer-bottom">
-  <div class="ft-logo">Best Brains <span>Surrey</span></div>
+  <div class="ft-logo" style="display: flex; align-items: center; gap: 0.6rem;">
+    <img src="assets/bb-icon.png" alt="" style="height: 34px; width: auto; display: block;" />
+    <span style="line-height: 1.1;">Best Brains <span style="color: var(--orange);">Surrey</span></span>
+  </div>
   <p>© 2026 Best Brains Learning Centers. All rights reserved. Surrey, BC, Canada.</p>
   <a href="https://bestbrains.com/ca-en/privacy" target="_blank" rel="noopener">Privacy Policy</a>
 </div>
 
 </body>
+<script>
+  // Convert each .ig-embed[data-url] into an Instagram embed iframe.
+  // To feature a post or reel, set data-url="https://www.instagram.com/reel/SHORTCODE/" or /p/SHORTCODE/
+  (function () {
+    document.querySelectorAll('.ig-embed').forEach(function (el) {
+      var url = (el.getAttribute('data-url') || '').trim();
+      var loc = el.getAttribute('data-loc') || '';
+      var hint = el.getAttribute('data-hint') || 'Paste an Instagram URL here.';
+
+      if (url && /instagram\.com\/(p|reel|tv)\//.test(url)) {
+        var embedUrl = url.replace(/\/?$/, '/').replace(/\/embed\/?$/, '/') + 'embed';
+        el.innerHTML =
+          '<iframe src="' + embedUrl + '" scrolling="no" allowtransparency="true" frameborder="0" loading="lazy" allow="encrypted-media; autoplay; clipboard-write; picture-in-picture; web-share" allowfullscreen></iframe>';
+      } else {
+        el.innerHTML =
+          '<div class="ig-placeholder">' +
+            '<div class="ig-icon">▶</div>' +
+            (loc ? '<div class="ig-loc">' + loc + '</div>' : '') +
+            '<div class="ig-title">Instagram embed slot</div>' +
+            '<div class="ig-hint">' + hint + '</div>' +
+          '</div>';
+      }
+    });
+  })();
+</script>
 </html>
